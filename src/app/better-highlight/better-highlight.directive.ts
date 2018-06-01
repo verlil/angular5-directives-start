@@ -4,16 +4,16 @@ import { Directive, Renderer2, ElementRef, HostListener, HostBinding, OnInit, In
   selector: '[appBetterHighlight]'
 })
 export class BetterHighlightDirective implements OnInit{
-  @Input() innerText: string = 'transparent';
+  @Input() defaultColor: string = 'transparent';
   @Input() hilightColor: string = 'blue';
-  @Input() visitedColor: string = 'purple';
+  @Input('appBetterHighlight') visitedColor: string = 'purple';
   @HostBinding('style.backgroundColor') backgroundColorMyProperty: string;
   //transparent - is initial color
 
   constructor(private elRef: ElementRef, private renderer: Renderer2) { }
 
   ngOnInit(){
-    this.backgroundColorMyProperty = this.innerText;
+    this.backgroundColorMyProperty = this.defaultColor;
     // this.renderer.setStyle(this.elRef.nativeElement, 'background-color', 'purple');
   }
 
