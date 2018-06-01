@@ -21,9 +21,21 @@
             class="list-group-item"
             [ngClass]="{even: even % 2 === 0}"
             *ngFor="let even of evenNumbers">
+            <!-- the star indicates that this is a structural directive -->
             {{ even }}
           </li>
         </div>
+        <ng-template [ngIf]="!onlyOdd">
+          <!-- ng-template is not rendered by itself, but it is defined for the Angular so it can be used by Angular -->
+          <div>
+            <li
+              class="list-group-item"
+              [ngClass]="{even: even % 2 === 0}"
+              *ngFor="let even of evenNumbers">
+              {{ even }}
+            </li>
+          </div>
+        </ng-template>
       </ul>
       <p appBasicHighlight>Style me with BasicHighlightDirective</p>
       <p appBetterHighlight [appBetterHighlight]="'yellow'" defaultColor="pink">Style me with BetterHighlightDirective</p>
